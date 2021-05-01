@@ -110,7 +110,7 @@ def create_document_term_matrix(bug_text_list):
 ###main###
 def Preprocess_Vectorize_TFIDF():
   #read data set from csv
-  dataset = read_csv_file('./../dataset/redhat.csv')
+  dataset = read_csv_file('./../dataset/spring.csv')
   #get only required fields from dataset
   filtered_dataset = filter_required_columns(dataset)
   #write filtered dataset into new csv
