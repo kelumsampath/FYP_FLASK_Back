@@ -7,6 +7,7 @@ from Predict_Text_Score import Predict_textScore
 from Predict_MLR import Predict_Storypoint
 from flask_mysqldb import MySQL
 from flask_cors import CORS
+import json
 
 
 app = Flask(__name__)
@@ -35,6 +36,23 @@ def hello_world():
             "num":c()
         }
         return json
+
+@app.route('/developers',methods=["GET","POST"])
+def developers():
+    if request.method=="GET":
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM developer")
+        devs=cur.fetchall()
+        cur.close()
+        print(json.dumps( devs))
+        return json.dumps( devs)
+        
+    elif request.method=="POST":
+        jsont={
+            "name":"kelum",
+            "num":c()
+        }
+        return jsont
 
 @app.route('/bug',methods=["GET","POST"])
 def bug():
