@@ -6,6 +6,7 @@ from Train_MLR import MLR
 from Predict_Text_Score import Predict_textScore
 from Predict_MLR import Predict_Storypoint
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 
 
 app = Flask(__name__)
@@ -15,6 +16,7 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'test'
 
+CORS(app)
 mysql = MySQL(app)
 
 @app.route('/',methods=["GET","POST"])
@@ -28,6 +30,20 @@ def hello_world():
         cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
         mysql.connection.commit()
         cur.close()
+        json={
+            "name":"kelum",
+            "num":c()
+        }
+        return json
+
+@app.route('/bug',methods=["GET","POST"])
+def bug():
+    if request.method=="GET":
+        print('ss')
+        return 'Hello, World!'+str(b())
+    elif request.method=="POST":
+        print(request.json)
+        print('sssssssss')
         json={
             "name":"kelum",
             "num":c()
