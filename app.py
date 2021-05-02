@@ -43,7 +43,18 @@ def bug():
         return 'Hello, World!'+str(b())
     elif request.method=="POST":
         print(request.json)
-        print('sssssssss')
+        cur = mysql.connection.cursor()
+        try:
+            cur.execute("INSERT INTO bug(Summary, Description) VALUES (%s, %s)", (request.json['summary'], request.json['description']))
+            id=mysql.connection.insert_id()
+            mysql.connection.commit()
+            for devId in request.json['developers']:
+                cur.execute("INSERT INTO bugdev(DevId, BugId) VALUES (%s, %s)", (devId, id))
+            mysql.connection.commit()
+        except Exception as e:
+            print(e)
+        finally:
+            cur.close()
         json={
             "name":"kelum",
             "num":c()
