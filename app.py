@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import request
+from flask import json, request
 from Train_Vecorize import b, c,Preprocess_Vectorize_TFIDF
 from Train_RandomForest import e,RandomForest
 from Train_MLR import MLR
@@ -7,7 +7,6 @@ from Predict_Text_Score import Predict_textScore
 from Predict_MLR import Predict_Storypoint
 from flask_mysqldb import MySQL
 from flask_cors import CORS
-import json
 
 
 app = Flask(__name__)
@@ -57,8 +56,13 @@ def developers():
 @app.route('/bug',methods=["GET","POST"])
 def bug():
     if request.method=="GET":
-        print('ss')
-        return 'Hello, World!'+str(b())
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT b.Id,b.Summary,b.Description,b.StroyPoint,b.PredictedStoryPoint,bc.Comment,d.Name FROM bugdev bd JOIN developer d ON bd.DevId = d.Id RIGHT JOIN bug b ON b.Id = bd.BugId LEFT JOIN bugcomment bc ON b.Id = bc.BugId")
+        bugs=cur.fetchall()
+        cur.close()
+        print(json.dumps( bugs))
+        return json.dumps( bugs)
+
     elif request.method=="POST":
         print(request.json)
         cur = mysql.connection.cursor()
@@ -73,11 +77,11 @@ def bug():
             print(e)
         finally:
             cur.close()
-        json={
+        jsont={
             "name":"kelum",
             "num":c()
         }
-        return json
+        return jsont
 
 @app.route('/train',methods=["GET","POST"])
 def train():
@@ -113,6 +117,8 @@ import Train_RandomForest
 import Train_MLR 
 import Predict_Text_Score
 import Predict_MLR
+import json
+import json
 
 if __name__== '__main__':
     app.run(debug=True)
