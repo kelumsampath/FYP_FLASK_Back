@@ -164,7 +164,34 @@ def trainmodel():
             "AccuracyMeassures1":Accuracy,
             "AccuracyMeassures2":Accuracy2
         }
+        print(Accuracy["Mean Squared Error"])
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE accuracy SET `Mean Absolute Error`=%s,`Mean Squared Error`=%s,`Root Mean Squared Error`=%s WHERE Id=1", (Accuracy["Mean Absolute Error"], Accuracy["Mean Squared Error"],Accuracy["Root Mean Squared Error"]))
+        cur.execute("UPDATE accuracy SET `Mean Absolute Error`=%s,`Mean Squared Error`=%s,`Root Mean Squared Error`=%s WHERE Id=2", (Accuracy2["Mean Absolute Error"], Accuracy2["Mean Squared Error"],Accuracy2["Root Mean Squared Error"]))
+        mysql.connection.commit()
+        cur.close()
         return meassures
+
+@app.route('/accuracy',methods=["GET","POST"])
+def accuracy():
+    if request.method=="GET":
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM accuracy")
+        acc=cur.fetchall()
+        cur.close()
+        meassures={
+            "AccuracyMeassures1":{"Mean Absolute Error": acc[0][1], "Mean Squared Error": acc[0][2], "Root Mean Squared Error": acc[0][3]},
+            "AccuracyMeassures2":{"Mean Absolute Error": acc[1][1], "Mean Squared Error":acc[1][2], "Root Mean Squared Error": acc[1][3]},
+        }
+        return meassures
+        
+    elif request.method=="POST":
+        jsont={
+            "name":"kelum",
+            "num":c()
+        }
+        return jsont
+
 
 import Train_Vecorize  
 import Train_RandomForest
