@@ -53,6 +53,25 @@ def developers():
         }
         return jsont
 
+@app.route('/bugreport/<bugId>',methods=["GET"])
+def bugreport(bugId):
+    if request.method=="GET":
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT b.Id,b.Summary,b.Description,b.StroyPoint,b.PredictedStoryPoint,bc.Comment,d.Name FROM bugdev bd JOIN developer d ON bd.DevId = d.Id RIGHT JOIN bug b ON b.Id = bd.BugId LEFT JOIN bugcomment bc ON b.Id = bc.BugId WHERE b.Id=%s;",(bugId))
+        bugs=cur.fetchall()
+        cur.close()
+        # print(json.dumps( bugs))
+        # return json.dumps( bugs)
+        bugList=[]
+        temp={}
+        for result in bugs:
+            temp={"Id":result[0],"Summary":result[1],"Description":result[2],"StroyPoint":result[3],"PredictedStoryPoint":result[4],"Comment":result[5],"Name":result[6]}
+            bugList.append(temp)
+            temp={}
+        print(bugList)
+        return {"bugreport":bugList}
+
+
 @app.route('/bug',methods=["GET","POST"])
 def bug():
     if request.method=="GET":
