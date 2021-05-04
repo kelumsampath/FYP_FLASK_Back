@@ -7,7 +7,7 @@ from Predict_Text_Score import Predict_textScore
 from Predict_MLR import Predict_Storypoint
 from flask_mysqldb import MySQL
 from flask_cors import CORS
-
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -149,6 +149,15 @@ def predict():
         }
         return json
 
+@app.route('/trainmodel',methods=["GET","POST"])
+def trainmodel():
+    if request.method=="GET":
+        return 'Hello, World!'+str(b())
+    elif request.method=="POST":
+        f = request.files['file']
+        f.save(os.path.join('dataset', secure_filename(f.filename)))
+        return 'file uploaded successfully'
+
 import Train_Vecorize  
 import Train_RandomForest
 import Train_MLR 
@@ -156,6 +165,7 @@ import Predict_Text_Score
 import Predict_MLR
 import json
 import json
+import os
 
 if __name__== '__main__':
     app.run(debug=True)
