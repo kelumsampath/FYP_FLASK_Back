@@ -192,6 +192,20 @@ def accuracy():
         }
         return jsont
 
+@app.route('/traineddata',methods=["GET","POST"])
+def traineddata():
+    if request.method=="GET":
+        dataset = pd.read_csv("./csv/9_final.csv")
+        print(dataset)
+        return "meassures"
+        
+    elif request.method=="POST":
+        jsont={
+            "name":"kelum",
+            "num":c()
+        }
+        return jsont
+
 
 import Train_Vecorize  
 import Train_RandomForest
@@ -201,6 +215,7 @@ import Predict_MLR
 import json
 import json
 import os
+import pandas as pd
 
 if __name__== '__main__':
     app.run(debug=True)

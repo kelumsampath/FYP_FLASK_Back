@@ -17,6 +17,8 @@ def MLR():
     pickle.dump(linear_regression, open('./Models/MultipleLinearRegressorModel.sav', 'wb'))
 
     y_pred= linear_regression.predict(x)
+    dataset["Estimated_sp"]=np.round(y_pred)
+    dataset.to_csv('./csv/9_final.csv', encoding='utf-8', mode='w', header=True, index=False)
 
     print('Mean Absolute Error:', metrics.mean_absolute_error(y, y_pred))
     print('Mean Squared Error:', metrics.mean_squared_error(y, y_pred))
