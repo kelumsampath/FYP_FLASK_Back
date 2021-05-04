@@ -8,6 +8,7 @@ from Predict_MLR import Predict_Storypoint
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -125,7 +126,7 @@ def train():
     if request.method=="GET":
         return 'Hello, World!'+str(b())
     elif request.method=="POST":
-        Preprocess_Vectorize_TFIDF()
+        Preprocess_Vectorize_TFIDF('./../dataset/spring.csv')
         Accuracy=RandomForest()
         Accuracy2=MLR()
         json={
@@ -155,8 +156,15 @@ def trainmodel():
         return 'Hello, World!'+str(b())
     elif request.method=="POST":
         f = request.files['file']
-        f.save(os.path.join('dataset', secure_filename(f.filename)))
-        return 'file uploaded successfully'
+        f.save(os.path.join("dataset/", secure_filename("data.csv")))
+        Preprocess_Vectorize_TFIDF('./dataset/data.csv')
+        Accuracy=RandomForest()
+        Accuracy2=MLR()
+        meassures={
+            "AccuracyMeassures1":Accuracy,
+            "AccuracyMeassures2":Accuracy2
+        }
+        return meassures
 
 import Train_Vecorize  
 import Train_RandomForest

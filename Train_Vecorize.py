@@ -108,9 +108,9 @@ def create_document_term_matrix(bug_text_list):
     return pd.DataFrame(doc_term_matrix.toarray(),columns=tfidf_vectorizer.get_feature_names())
 
 ###main###
-def Preprocess_Vectorize_TFIDF():
+def Preprocess_Vectorize_TFIDF(path):
   #read data set from csv
-  dataset = read_csv_file('./../dataset/spring.csv')
+  dataset = read_csv_file(path)
   #get only required fields from dataset
   filtered_dataset = filter_required_columns(dataset)
   #write filtered dataset into new csv
