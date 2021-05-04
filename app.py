@@ -60,15 +60,24 @@ def bugreport(bugId):
         cur.execute("SELECT b.Id,b.Summary,b.Description,b.StroyPoint,b.PredictedStoryPoint,bc.Comment,d.Name FROM bugdev bd JOIN developer d ON bd.DevId = d.Id RIGHT JOIN bug b ON b.Id = bd.BugId LEFT JOIN bugcomment bc ON b.Id = bc.BugId WHERE b.Id=%s;",(bugId))
         bugs=cur.fetchall()
         cur.close()
-        # print(json.dumps( bugs))
-        # return json.dumps( bugs)
         bugList=[]
+        names=[]
+        comments=[]
         temp={}
         for result in bugs:
             temp={"Id":result[0],"Summary":result[1],"Description":result[2],"StroyPoint":result[3],"PredictedStoryPoint":result[4],"Comment":result[5],"Name":result[6]}
             bugList.append(temp)
             temp={}
-        print(bugList)
+        for bg in bugList:
+            if bg["Comment"]!=None:
+                if bg["Comment"] not in comments:
+                    comments.append(bg["Comment"])
+            if bg["Name"]!=None:
+                if bg["Name"] not in names:
+                    names.append(bg["Name"])
+        bugList[0]["Comment"]=comments
+        bugList[0]["Name"]=names
+        print(bugList[0])
         return {"bugreport":bugList}
 
 
@@ -76,7 +85,8 @@ def bugreport(bugId):
 def bug():
     if request.method=="GET":
         cur = mysql.connection.cursor()
-        cur.execute("SELECT b.Id,b.Summary,b.Description,b.StroyPoint,b.PredictedStoryPoint,bc.Comment,d.Name FROM bugdev bd JOIN developer d ON bd.DevId = d.Id RIGHT JOIN bug b ON b.Id = bd.BugId LEFT JOIN bugcomment bc ON b.Id = bc.BugId")
+        # cur.execute("SELECT b.Id,b.Summary,b.Description,b.StroyPoint,b.PredictedStoryPoint,bc.Comment,d.Name FROM bugdev bd JOIN developer d ON bd.DevId = d.Id RIGHT JOIN bug b ON b.Id = bd.BugId LEFT JOIN bugcomment bc ON b.Id = bc.BugId")
+        cur.execute("SELECT * FROM bug")
         bugs=cur.fetchall()
         cur.close()
         # print(json.dumps( bugs))
@@ -84,7 +94,7 @@ def bug():
         bugList=[]
         temp={}
         for result in bugs:
-            temp={"Id":result[0],"Summary":result[1],"Description":result[2],"StroyPoint":result[3],"PredictedStoryPoint":result[4],"Comment":result[5],"Name":result[6]}
+            temp={"Id":result[0],"Summary":result[1],"Description":result[2],"StroyPoint":result[3],"PredictedStoryPoint":result[4]}
             bugList.append(temp)
             temp={}
         print(bug)
