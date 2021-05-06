@@ -10,7 +10,7 @@ def single_prefict_TS(data):
     #get only required fields from dataset
     filtered_dataset = filter_required_columns(dataset)
     #write filtered dataset into new csv
-    write_csv_file('./csv/Prediction/1_filtered_dataser.csv',filtered_dataset,'w')
+    write_csv_file('./csv/SinglePrediction/1_filtered_dataser.csv',filtered_dataset,'w')
     #refactor input dataset as for different inputs
     preData = refactor_dataset(filtered_dataset)
     del preData[0]
