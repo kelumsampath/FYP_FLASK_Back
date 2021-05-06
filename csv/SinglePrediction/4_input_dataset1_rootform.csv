@@ -1,4 +1,5 @@
-Bug text root form,Issue key,Story point
+Bug text root form,issue key,Story point
+"counter sink accept spel express as user , i 'm tri use { { counter } } sink { spel } } express , i 'm abl use combin . it [ throws|http : //github.com/spring-cloud/spring-cloud-stream-modules/blob/master/counter-sink/src/main/java/org/springframework/cloud/stream/module/metrics/countersinkproperties.java # l77 ] { { exactli one 'name ' 'nameexpress ' must set } } error messag .",11,
 occat miss index elasticsearch occasion applic still n't index elasticsearch . need investig might occur .,USERGRID-1027,8.0
 re-index use amazonasynceventservic support updat date see implement exampl inmemoryasynceventservic org/apache/usergrid/corepersistence/asyncevents/eventbuilderimpl.java:166 thi filter base modified/upd date event index . need ensur amazonasynceventservic consum implement someth similar or look produc filter event even drop aw queue .,USERGRID-900,3.0
 fix prune usergrid tool 2.1 the usergrid tool broken varieti way two-dot-o two-dot-o-dev brand . the tool compil . mani reli outdat 1.0 concept . mani obsolet . 1 . delet obsolet tool 2 . make tool compil,USERGRID-872,3.0

@@ -1,4 +1,10 @@
 Summary,Description,Number of developers,Number of comments,Issue key,Story point,previous_story_point,estimated_test_score,text_score_rounded
+Counter sink does not accept SpEL expressions,"As a user, I'm trying to use {{counter}} sink with {SpEL}} expression, but I'm not able to use them in combination. It [throws|https://github.com/spring-cloud/spring-cloud-stream-modules/blob/master/counter-sink/src/main/java/org/springframework/cloud/stream/module/metrics/CounterSinkProperties.java#L77] {{exactly one of 'name' and 'nameExpression' must be set}} as error message.
+
+",1,0,11,,,5.336547619047619,5.0
+Counter sink does not accept SpEL expressions,"As a user, I'm trying to use {{counter}} sink with {SpEL}} expression, but I'm not able to use them in combination. It [throws|https://github.com/spring-cloud/spring-cloud-stream-modules/blob/master/counter-sink/src/main/java/org/springframework/cloud/stream/module/metrics/CounterSinkProperties.java#L77] {{exactly one of 'name' and 'nameExpression' must be set}} as error message.
+
+",1,0,11,,,5.336547619047619,5.0
 Occational MIsses on Indexing into Elasticsearch,Occasionally applications still aren't being indexed into elasticsearch. Need to investigate why these might be occuring. ,0,0,USERGRID-1027,8.0,8.0,2.7315195182972167,3.0
 Re-index using AmazonAsyncEventService should support updated date,"see implemented example for InMemoryAsyncEventService
 
@@ -756,7 +762,7 @@ at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
 at java.util.concurrent.FutureTask.run(FutureTask.java:166)
 at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
 at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
-at java.lang.Thread.run(Thread.java:722)",0,5,USERGRID-442,3.0,3.0,3.2,3.0
+at java.lang.Thread.run(Thread.java:722)",0,5,USERGRID-442,3.0,3.0,3.3,3.0
 Scheduler run failed when system idling,"This error happens consistently in some clusters when the system is largely idle:
 
 2015-02-27 23:19:40,060 [JobSchedulerService] ERROR org.apache.usergrid.batch.service.JobSchedulerService- Scheduler run failed, error is
@@ -1235,7 +1241,7 @@ https://github.com/apache/mesos/blob/4575c9b452c25f64e6c6cc3eddc12ed3b1f8538b/sr
   }
 {code}
 
-Since these are {{hashmap<FrameworkID, hashmap<TaskID, Task>>}}.",1,2,MESOS-10094,1.0,1.0,2.4,2.0
+Since these are {{hashmap<FrameworkID, hashmap<TaskID, Task>>}}.",1,2,MESOS-10094,1.0,1.0,2.05,2.0
 Libprocess does not properly escape subprocess argument strings on Windows,"When running some tests of Mesos on Windows, I discovered that the following command would not execute successfully when passed to the Docker containerizer in {{TaskInfo.command}}:
 {noformat}
 python -c ""print('hello world')""
@@ -1252,7 +1258,7 @@ CSI plugins reporting duplicated volumes will crash the agent.,"The CSI spec req
 {noformat}
  F0829 07:13:55.171332 12721 provider.cpp:1089] Check failed: !checkpointedMap.contains(resource.disk().source().id()){noformat}
 MESOS-9254 introduces periodic reconciliation which make this problem much easier to manifest.",1,4,MESOS-9956,2.0,2.0,3.1365546218487395,3.0
-Master does not handle returning unreachable agents as draining/deactivated,"The master has two code paths for handling agent reregistration messages, one culminating in {{Master::___reregisterSlave}} and the other in {{Master::}}{{__reregisterSlave}}. The two paths are not continuations of each other.  Looks like we missed the double-underscore case in the initial implementation.  This is the path that unreachable agents take, when/if they come back to the cluster.  The result is that when unreachable agents are marked for draining, they do not get sent the appropriate message unless they are forced to reregister again (i.e. restarted manually).",1,2,MESOS-9934,3.0,3.0,3.833333333333333,4.0
+Master does not handle returning unreachable agents as draining/deactivated,"The master has two code paths for handling agent reregistration messages, one culminating in {{Master::___reregisterSlave}} and the other in {{Master::}}{{__reregisterSlave}}. The two paths are not continuations of each other.  Looks like we missed the double-underscore case in the initial implementation.  This is the path that unreachable agents take, when/if they come back to the cluster.  The result is that when unreachable agents are marked for draining, they do not get sent the appropriate message unless they are forced to reregister again (i.e. restarted manually).",1,2,MESOS-9934,3.0,3.0,3.2833333333333328,3.0
 SlaveTest.DrainingAgentRejectLaunch is flaky,"We saw {{SlaveTest.DrainingAgentRejectLaunch}} fail repeatedly on ASF Jenkins CI.
 {noformat}
 ../../src/tests/slave_tests.cpp:12408: Failure
@@ -1327,7 +1333,7 @@ The condition to ignore the agent update will be triggered in one of the followi
 1. The resource provider has no resource, so the agent's total resource remains the same.
 2. When the agent restarts and reregisters, its resource provider resources will be reset.
 
-As a result, the master will still keep records for the disconnected resource providers and report them.",1,2,MESOS-9831,2.0,2.0,2.85,3.0
+As a result, the master will still keep records for the disconnected resource providers and report them.",1,2,MESOS-9831,2.0,2.0,2.95,3.0
 Don't use reverse DNS for hostname validation,"Upon connection we first resolve the hostname and forget about it
 
 https://github.com/apache/mesos/blob/master/3rdparty/libprocess/src/http.cpp#L1462-L1504
@@ -1353,7 +1359,7 @@ Agent crashes when SLRP recovers dropped operations.,"MESOS-9537 is fixed by per
 [https://github.com/apache/mesos/blob/master/src/resource_provider/storage/provider.cpp#L1278]
 Which caused the agent to crash with the following message during SLRP recovery:
 {noformat}
-Reached unreachable statement at /pkg/src/mesos/src/resource_provider/storage/provider.cpp:1283{noformat}",1,2,MESOS-9661,1.0,1.0,2.1,2.0
+Reached unreachable statement at /pkg/src/mesos/src/resource_provider/storage/provider.cpp:1283{noformat}",1,2,MESOS-9661,1.0,1.0,1.9,2.0
 Resource provider manager assumes all operations are triggered by frameworks,"When the agent tries to apply an operation to resource provider resources, it invokes {{ResourceProviderManager::applyOperation}} which in turn invokes {{ResourceProviderManagerProcess::applyOperation}}. That function currently assumes that the received message contains a valid {{FrameworkID}},
 {noformat}
  void ResourceProviderManagerProcess::applyOperation(
@@ -1395,7 +1401,7 @@ https://github.com/apache/mesos/blob/f44535bca811720fc272c9abad2bc78652d61fe3/sr
 But SLRP simply updates its metadata and do nothing:
 https://github.com/apache/mesos/blob/f44535bca811720fc272c9abad2bc78652d61fe3/src/resource_provider/storage/provider.cpp#L2805
 
-This would lead to data leakage if the framework does not call `CREATE_DISK` but just unreserve it.",1,6,MESOS-9544,5.0,5.0,2.9,3.0
+This would lead to data leakage if the framework does not call `CREATE_DISK` but just unreserve it.",1,6,MESOS-9544,5.0,5.0,3.05,3.0
 Hierarchical allocator check failure when an operation on a shutdown framework finishes,"When a non-speculated operation like e.g., {{CREATE_DISK}} becomes terminal after the originating framework was torn down, we run into an assertion failure in the allocator.
 {noformat}
 I0129 11:55:35.764394 57857 master.cpp:11373] Updating the state of operation 'operation' (uuid: 10a782bd-9e60-42da-90d6-c00997a25645) for framework a4d0499b-c0d3-4abf-8458-73e595d061ce-0000 (latest state: OPERATION_PENDING, status update state: OPERATION_FINISHED)
@@ -1412,7 +1418,7 @@ Reproducer:
  * let a terminal, successful operation status update reach the master
  * 💥 
 
-To solve this we should cleanup the lifetimes of operations. Since operations can outlive their framework (unlike e.g., tasks), we probably need a different approach here.",1,3,MESOS-9542,5.0,5.0,4.1,4.0
+To solve this we should cleanup the lifetimes of operations. Since operations can outlive their framework (unlike e.g., tasks), we probably need a different approach here.",1,3,MESOS-9542,5.0,5.0,4.2,4.0
 SLRP sends inconsistent status updates for dropped operations.,"The bug manifests in the following scenario:
 1. Upon receiving profile updates, the SLRP sends an {{UPDATE_STATE}} to the agent with a new resource version.
 2. At the same time, the agent sends an {{APPLY_OPERATION}} to the SLRP with the original resource version.
@@ -2521,7 +2527,7 @@ E0209 18:26:37.030012  7282 uri_disk_profile.cpp:220] Failed to parse result: Fa
 Default executor should allow decreasing the escalation grace period of a terminating task,"The command executor supports [decreasing the escalation grace period of a terminating task|https://github.com/apache/mesos/blob/c665dd6c22715fa941200020a8f7209f1f5b1ca1/src/launcher/executor.cpp#L800-L803].
 
 For consistency, this should also be supported by the default executor.",0,1,MESOS-8557,5.0,5.0,4.175,4.0
-Test StorageLocalResourceProviderTest.ROOT_Metrics is flaky,"The SLRP Metrics test is flaky because the agent might got two {{SlaveRegisteredMessage}}s due to its retry logic for registration, and thus it would send two {{UpdateSlaveMessage}}s. As a result, the futures waiting for these messages will be ready before the plugin is actually launched. This will lead to a race between the SIGKILL and LAUNCH_CONTAINER in the test, and if the kill happens before SLRP gets connected to the plugin, SLRP will wait for 1 minutes before giving up, which is too long for the test to wait for a second launch.",1,2,MESOS-8548,2.0,2.0,1.9120220393487457,2.0
+Test StorageLocalResourceProviderTest.ROOT_Metrics is flaky,"The SLRP Metrics test is flaky because the agent might got two {{SlaveRegisteredMessage}}s due to its retry logic for registration, and thus it would send two {{UpdateSlaveMessage}}s. As a result, the futures waiting for these messages will be ready before the plugin is actually launched. This will lead to a race between the SIGKILL and LAUNCH_CONTAINER in the test, and if the kill happens before SLRP gets connected to the plugin, SLRP will wait for 1 minutes before giving up, which is too long for the test to wait for a second launch.",1,2,MESOS-8548,2.0,2.0,1.8548791822058883,2.0
 The default executor can wrongly indicate that tasks from all task groups are unhealthy,"The default executor sets a ""global"" [unhealthy|https://github.com/apache/mesos/blob/7ace6c4c263ebdd8f1605b1c478cb2e7eb9e83a1/src/launcher/default_executor.cpp#L1286] field to {{true}} once it kills a task due to failed health checks.
 
 When a task from any task group exits, it will [check|https://github.com/apache/mesos/blob/7ace6c4c263ebdd8f1605b1c478cb2e7eb9e83a1/src/launcher/default_executor.cpp#L877-L882] that ""global"" healthy field and set the task status update's {{healthy}} field accordingly. This means that once an unhealthy task belonging to a task group is killed, task status updates for tasks belonging to other task groups, which can contain only healthy tasks, will be sent with their {{healthy}} field set to {{false}}.",0,1,MESOS-8543,3.0,3.0,2.85,3.0
@@ -2883,7 +2889,7 @@ We can see that once the SLRP reregisters with the agent, the following happens:
 # The agent will send an {{UpdateSlave}} message to the master including the converted resources and the {{CREATE_VOLUME}} operation with the status {{OPERATION_FINISHED}}.
 # The master will update the agent's resources, including the volume created by the operation.
 # The agent will resend the operation status update.
-# The master will try to apply the operation and crash, because it already updated the agent's resources on step #2.",1,4,MESOS-8422,5.0,5.0,1.9,2.0
+# The master will try to apply the operation and crash, because it already updated the agent's resources on step #2.",1,4,MESOS-8422,5.0,5.0,1.95,2.0
 RP manager incorrectly setting framework ID leads to CHECK failure,"The resource provider manager [unconditionally sets the framework ID|https://github.com/apache/mesos/blob/3290b401d20f2db2933294470ea8a2356a47c305/src/resource_provider/manager.cpp#L637] when forwarding operation status updates to the agent. This is incorrect, for example, when the resource provider [generates OPERATION_DROPPED updates during reconciliation|https://github.com/apache/mesos/blob/3290b401d20f2db2933294470ea8a2356a47c305/src/resource_provider/storage/provider.cpp#L1653-L1657], and leads to protobuf errors in this case since the framework ID's required {{value}} field is left unset.",1,2,MESOS-8419,1.0,1.0,1.65,2.0
 CHECK failure if trying to recover nested containers but the framework checkpointing is not enabled.,"{noformat}
 I0108 23:05:25.313344 31743 slave.cpp:620] Agent attributes: [  ]
@@ -3296,7 +3302,7 @@ and executors to the master in the ""post-reservation-refinement"" format,
 which is incompatible for pre-1.4 masters. We should change the agent
 such that it always downgrades the resources to
 the ""pre-reservation-refinement"" format, and the master unconditionally
-upgrade the resources to ""post-reservation-refinement"" format.",1,2,MESOS-7922,2.0,2.0,2.2,2.0
+upgrade the resources to ""post-reservation-refinement"" format.",1,2,MESOS-7922,2.0,2.0,2.3,2.0
 Non-checkpointing framework's tasks should not be marked LOST when agent disconnects.,"Currently, when framework with checkpointing disabled has tasks running on an agent and that agent disconnects from the master, the master will mark those tasks LOST and remove them from its memory. The assumption is that the agent is disconnecting because it terminated.
 
 However, it's possible that this disconnection occurred due to a transient loss of connectivity and the agent re-connects while never having terminated. This case violates our assumption of there being no unknown tasks to the master:
@@ -3342,7 +3348,7 @@ mesos-slave1: https://gist.github.com/sagar8192/3a83364b1f5ffc63902a80c728647f31
 mesos-slave2: https://gist.github.com/sagar8192/1b341ef2271dde11d276974a27109426
 Mesos framework: https://gist.github.com/sagar8192/bcd4b37dba03bde0a942b5b972004e8a
 
-I think mesos should rescind offers and inverse offers only for those slaves that are marked for maintenance(draining mode).",1,3,MESOS-7882,3.0,3.0,3.45,3.0
+I think mesos should rescind offers and inverse offers only for those slaves that are marked for maintenance(draining mode).",1,3,MESOS-7882,3.0,3.0,3.55,4.0
 Master stores old resource format in the registry,"We intend for the master to store all internal resource representations in the new, post-reservation-refinement format. However, [when persisting registered agents to the registrar|https://github.com/apache/mesos/blob/498a000ac1bb8f51dc871f22aea265424a407a17/src/master/master.cpp#L5861-L5876], the master does not convert the resources; agents provide resources in the pre-reservation-refinement format, and these resources are stored as-is. This means that after recovery, any agents in the master's {{slaves.recovered}} map will have {{SlaveInfo.resources}} in the pre-reservation-refinement format.
 
 We should update the master to convert these resources before persisting them to the registry.",1,4,MESOS-7851,3.0,3.0,2.95,3.0
@@ -3473,7 +3479,7 @@ Master's agent removal rate limit also applies to agent unreachability.,"Current
 Rather than waiting for non-partition-aware support to be removed (that may not occur for a long time) per MESOS-5948, we should instead fix the implementation so that unreachability does not get gated behind the agent removal rate limiting.
 
 Marking this as a bug since from the user's perspective it doesn't behave as expected, there should be a separate flag for rate limiting unreachability marking, but likely unreachability marking does not need rate limiting, since the intention was for frameworks to impose their own rate limiting for replacing tasks.",0,0,MESOS-7721,3.0,3.0,3.7834821428571432,4.0
-Test that master rejects requests to create refined reservations on a non-capable agent.,"This test was done manually for now, but we should write a test for it. Similar to {{CreateOperationValidationTest.AgentHierarchicalRoleCapability}}.",0,0,MESOS-7715,2.0,2.0,3.392533936651584,3.0
+Test that master rejects requests to create refined reservations on a non-capable agent.,"This test was done manually for now, but we should write a test for it. Similar to {{CreateOperationValidationTest.AgentHierarchicalRoleCapability}}.",0,0,MESOS-7715,2.0,2.0,3.642533936651584,4.0
 Fix agent downgrade for reservation refinement,"The agent code only partially supports downgrading of an agent correctly.
 The checkpointed resources are done correctly, but the resources within
 the {{SlaveInfo}} message as well as tasks and executors also need to be downgraded
@@ -3966,7 +3972,7 @@ function is never satisfied.
 
 We need a general purpose method for closing the IOSwitchboard FDs when failing in the launch path.",1,13,MESOS-7050,2.0,2.0,2.7315195182972167,3.0
 Send SIGKILL after SIGTERM to IOSwitchboard after container termination.,This is follow up for MESOS-6664,1,2,MESOS-7042,2.0,2.0,1.6996139971139974,2.0
-Update framework authorization to support multiple roles,"Currently the master assumes that a framework is only in a single role, see {{Master::authorizeFramework}}. This code should be updated to support frameworks with multiple roles. In particular it should get authorization of the framework's principal to register in each of the framework's roles.",1,2,MESOS-7022,3.0,3.0,4.05,4.0
+Update framework authorization to support multiple roles,"Currently the master assumes that a framework is only in a single role, see {{Master::authorizeFramework}}. This code should be updated to support frameworks with multiple roles. In particular it should get authorization of the framework's principal to register in each of the framework's roles.",1,2,MESOS-7022,3.0,3.0,4.0,4.0
 Change `Environment.Variable.Value` from required to optional,"To prepare for future work which will enable the modular fetching of secrets, we should change the {{Environment.Variable.Value}} field from {{required}} to {{optional}}. This way, the field can be left empty and filled in by a secret fetching module.",1,2,MESOS-6991,2.0,2.0,2.7315195182972167,3.0
 Fix BOOST random generator initialization on Windows,"seed_rng::seed_rng does not produced the expected result in Windows since is using `/dev/urandom` file.  
 
@@ -4187,7 +4193,7 @@ Reserve operation should validate reserved resource role against resource alloca
 
 With multi-role framework, we should validate reserved resource role same as resource allocation role.
 
-Please make sure distinguish dynamic reservation with framework and http endpoint. If dynamic reservation was triggered by a framework, then we need to do such validation. If done by the http endpoint, then no need to validate the roles.",1,2,MESOS-6730,3.0,3.0,2.95,3.0
+Please make sure distinguish dynamic reservation with framework and http endpoint. If dynamic reservation was triggered by a framework, then we need to do such validation. If done by the http endpoint, then no need to validate the roles.",1,2,MESOS-6730,3.0,3.0,3.05,3.0
 Check that `PreferredToolArchitecture` is set to `x64` on Windows before building,"If this variable is not set before we build, it will cause the linker to occasionally hang forever, due to a MSVC toolchain bug in the linker.
 
 We should make this easy on developers and check for them. If the variable is not set, we should display an error message explaining.",1,2,MESOS-6720,2.0,2.0,2.7315195182972167,3.0
@@ -5078,7 +5084,7 @@ CID 1372871 (#1 of 1): Resource leak (RESOURCE_LEAK)
 6571      return Error(""Cannot send non-terminal update for queued task"");
 {code}
 
-https://scan5.coverity.com/reports.htm#v39597/p10429/fileInstanceId=98881751&defectInstanceId=28450463",1,1,MESOS-6153,1.0,1.0,1.7,2.0
+https://scan5.coverity.com/reports.htm#v39597/p10429/fileInstanceId=98881751&defectInstanceId=28450463",1,1,MESOS-6153,1.0,1.0,1.65,2.0
 Resource leak in libevent_ssl_socket.cpp.,"Coverity detected the following resource leak.
 IMO {code} if (fd == -1) {code} should be  {code} if (owned_fd == -1) {code}.
 
@@ -8302,7 +8308,7 @@ Allow libprocess/stout to build without first doing `make` in 3rdparty.,"After t
 GPU resource broke framework data table in webUI,"In agent_framework.html and master/static/agent.html, we add {{GPUs (Used / Allocated)}} in table header. But we didn't add the corresponding column to the table body as well.
 
 On the other hand, we didn't provide statistics for gpus on monitor endpoints.
-To provide those data in webui, it requires we implement gpus statistics in monitor endpoints firstly. ",1,3,MESOS-5436,1.0,1.0,3.15,3.0
+To provide those data in webui, it requires we implement gpus statistics in monitor endpoints firstly. ",1,3,MESOS-5436,1.0,1.0,3.05,3.0
 `network/cni` isolator should skip the bind mounting of the CNI network information root directory if possible,"Currently in the create() method `network/cni` isolator, for the CNI network information root directory (i.e., {{/var/run/mesos/isolators/network/cni}}), we do a self bind mount and make sure it is a shared mount of its own peer group. However, we should not do a self bind mount if the mount containing the CNI network information root directory is already a shared mount in its own share peer group, just like what we did for `filesystem/linux` isolator in [MESOS-5239 | https://issues.apache.org/jira/browse/MESOS-5239].",1,2,MESOS-5413,3.0,3.0,1.6996139971139974,2.0
 Delete the /observe HTTP endpoint,"The ""/observe"" endpoint was introduced a long time ago for supporting functionality that was never implemented. We should just kill this endpoint and associated code to avoid tech debt.",1,7,MESOS-5408,2.0,2.0,2.7315195182972167,3.0
 Make fields in authorization::Request protobuf optional.,"Currently {{authorization::Request}} protobuf declares {{subject}} and {{object}} as required fields. However, in the codebase we not always set them, which renders the message in the uninitialized state, for example:
@@ -8340,8 +8346,8 @@ Implement os::setHostname,,1,2,MESOS-5383,1.0,1.0,2.7315195182972167,3.0
 Implement os::fsync,,1,2,MESOS-5382,1.0,1.0,2.7315195182972167,3.0
 The scheduler library should have a delay before initiating a connection with master.,"Currently, the scheduler library {{src/scheduler/scheduler.cpp}} does have an artificially induced delay when trying to initially establish a connection with the master. In the event of a master failover or ZK disconnect, a large number of frameworks can get disconnected and then thereby overwhelm the master with TCP SYN requests. 
 
-On a large cluster with many agents, the master is already overwhelmed with handling connection requests from the agents. This compounds the issue further on the master.",1,10,MESOS-5359,3.0,3.0,2.75,3.0
-GET /master/maintenance/schedule/ produces 404.,"Attempts to make a GET request to /master/maintenance/schedule/ result in a 404. However, if I make a GET request to /master/maintenance/schedule (without the trailing /), it works. My current (untested) theory is that this might be related to the fact that there is also a /master/maintenance/schedule/status endpoint (an endpoint built on top of a functioning endpoint), as requests to /help and /help/ (with and without the trailing slash) produce the same functioning result.",1,2,MESOS-5333,3.0,3.0,5.336547619047619,5.0
+On a large cluster with many agents, the master is already overwhelmed with handling connection requests from the agents. This compounds the issue further on the master.",1,10,MESOS-5359,3.0,3.0,2.85,3.0
+GET /master/maintenance/schedule/ produces 404.,"Attempts to make a GET request to /master/maintenance/schedule/ result in a 404. However, if I make a GET request to /master/maintenance/schedule (without the trailing /), it works. My current (untested) theory is that this might be related to the fact that there is also a /master/maintenance/schedule/status endpoint (an endpoint built on top of a functioning endpoint), as requests to /help and /help/ (with and without the trailing slash) produce the same functioning result.",1,2,MESOS-5333,3.0,3.0,3.8134722222222224,4.0
 Make `os::close` always catch structured exceptions on Windows,,1,2,MESOS-5318,2.0,2.0,2.7315195182972167,3.0
 Env `MESOS_SANDBOX` is not set properly for command tasks that changes rootfs.,"This is in the context of Mesos containerizer (a.k.a., unified containerizer).
 
@@ -9883,7 +9889,7 @@ I0316 14:28:54.957495  1274 master.cpp:1065] Master terminating
 I0316 14:28:54.958026  1276 hierarchical.cpp:505] Removed slave c7653f60-33e9-4406-9f62-dc74c906bf83-S0
 [  FAILED  ] ContainerLoggerTest.LOGROTATE_RotateInSandbox (3635 ms)
 {code}",1,2,MESOS-4961,1.0,1.0,1.7,2.0
-Implement reconnect funtionality in the scheduler library.,"Currently, there is no way for the schedulers to force a reconnection attempt with the master using the scheduler library {{src/scheduler/scheduler.cpp}}. It is specifically useful in scenarios where there is a one way network partition with the master. Due to this, the scheduler has not received any {{HEARTBEAT}} events from the master. In this case, the scheduler might want to force a reconnection attempt with the master instead of relying on the {{disconnected}} callback.",1,2,MESOS-4950,3.0,3.0,3.8133333333333335,4.0
+Implement reconnect funtionality in the scheduler library.,"Currently, there is no way for the schedulers to force a reconnection attempt with the master using the scheduler library {{src/scheduler/scheduler.cpp}}. It is specifically useful in scenarios where there is a one way network partition with the master. Due to this, the scheduler has not received any {{HEARTBEAT}} events from the master. In this case, the scheduler might want to force a reconnection attempt with the master instead of relying on the {{disconnected}} callback.",1,2,MESOS-4950,3.0,3.0,3.3,3.0
 Docker runtime isolator tests may cause disk issue.,"Currently slave working directory is used as docker store dir and archive dir, which is problematic. Because slave work dir is exactly `environment->mkdtemp()`, it will get cleaned up until the end of the whole test. But the runtime isolator local puller tests cp the host's rootfs, which size is relatively big. Cleanup has to be done by each test tear down. ",1,2,MESOS-4942,2.0,2.0,2.997435897435897,3.0
 "Setup proper /etc/hostname, /etc/hosts and /etc/resolv.conf for containers in network/cni isolator.","The network/cni isolator needs to properly setup /etc/hostname and /etc/hosts for the container with a hostname (e.g., randomly generated) and the assigned IP returned by CNI plugin.
 We should consider the following cases:
@@ -11837,7 +11843,7 @@ Happens with Ubuntu 15.04, CentOS 6, CentOS 7 _quite_ often. ",1,4,MESOS-4604,2.
 Logrotate ContainerLogger should not remove IP from environment.,"The {{LogrotateContainerLogger}} starts libprocess-using subprocesses.  Libprocess initialization will attempt to resolve the IP from the hostname.  If a DNS service is not available, this step will fail, which terminates the logger subprocess prematurely.
 
 Since the logger subprocesses live on the agent, they should use the same {{LIBPROCESS_IP}} supplied to the agent.",1,5,MESOS-4598,1.0,1.0,4.003571428571428,4.0
-Rename `examples/event_call_framework.cpp` to `examples/test_http_framework.cpp`,We already have {{examples/test_framework.cpp}} for testing {{PID}} based frameworks. We would ideally want to rename {{event_call_framework}} to correctly reflect that it's an example for HTTP based framework.,1,2,MESOS-4583,1.0,1.0,1.988157894736842,2.0
+Rename `examples/event_call_framework.cpp` to `examples/test_http_framework.cpp`,We already have {{examples/test_framework.cpp}} for testing {{PID}} based frameworks. We would ideally want to rename {{event_call_framework}} to correctly reflect that it's an example for HTTP based framework.,1,2,MESOS-4583,1.0,1.0,2.1881578947368423,2.0
 Design doc for scheduler HTTP Stream IDs,"This ticket is for the design of HTTP stream IDs, for use with HTTP schedulers. These IDs allow Mesos to distinguish between different instances of HTTP framework schedulers.",1,2,MESOS-4573,5.0,5.0,3.505657894736842,4.0
 NetClsIsolatorTest.ROOT_CGROUPS_NetClsIsolate fails on CentOS 6,"This test fails in my CentOS 6 VM due to a cgroups issue:
 
@@ -13798,7 +13804,7 @@ For instance, in the test, we create a test rootfs by copying the host files. We
 https://github.com/apache/mesos/blob/master/src/tests/containerizer/launch_tests.cpp#L96-L102
 
 What I propose is that we always perform a recursive self bind mount of rootfs itself in fs::chroot::enter (after enter the new mount namespace). Seems that this is also done in libcontainer:
-https://github.com/opencontainers/runc/blob/master/libcontainer/rootfs_linux.go#L402",1,2,MESOS-3178,2.0,2.0,2.9,3.0
+https://github.com/opencontainers/runc/blob/master/libcontainer/rootfs_linux.go#L402",1,2,MESOS-3178,2.0,2.0,2.95,3.0
 Design doc for docker image registry client,Create design document for the docker registry Authenticator component so that we have a baseline for the implementation. ,1,1,MESOS-3166,3.0,3.0,3.30310907101786,3.0
 Port bootstrap to CMake,"Bootstrap does a lot of significant things, like setting up the git commit hooks. We will want something like bootstrap to run also on systems that don't have bash -- ideally this should just run in CMake itself.",1,2,MESOS-3134,5.0,5.0,2.7315195182972167,3.0
 Updating persistent volumes after slave restart is problematic.,"Just realize that while reviewing https://reviews.apache.org/r/34135
@@ -14007,7 +14013,7 @@ Mock function called more times than expected - returning directly.
 [  FAILED  ] OversubscriptionTest.FixedResourceEstimator (714 ms)
 {code}",1,4,MESOS-2869,1.0,1.0,1.37803738317757,1.0
 Slave should send oversubscribed resource information after master failover.,"After a master failover, if the total amount of oversubscribed resources does not change, then the slave will not send the UpdateSlave message to the new master. The slave needs to send the information to the new master regardless of this.",1,2,MESOS-2866,3.0,3.0,2.95,3.0
-Master crashes when framework changes principal on re-registration,The master should be updated to avoid crashing when a framework re-registers with a different principal.,1,9,MESOS-2842,5.0,5.0,3.9,4.0
+Master crashes when framework changes principal on re-registration,The master should be updated to avoid crashing when a framework re-registers with a different principal.,1,9,MESOS-2842,5.0,5.0,4.1,4.0
 Flaky test: FetcherCacheHttpTest.HttpCachedSerialized,"FetcherCacheHttpTest.HttpCachedSerialized has been observed to fail (once  so far), but normally works fine. Here is the failure output:
 
 [ RUN      ] FetcherCacheHttpTest.HttpCachedSerialized
@@ -15121,7 +15127,7 @@ Finished: FAILURE
  Help us localize this page Page generated: Jul 14, 2014 5:57:17 PMREST 
 {code}",1,2,MESOS-1594,1.0,1.0,5.15,5.0
 Improve framework rate limiting by imposing the max number of outstanding messages per framework principal,"* Rate limits config takes a configurable *capacity* for each principal.
-* To ensure that Master maintain the message order of a framework it's important that Master sends an FrameworkErrorMessage back to the scheduler to ask it to abort.",1,4,MESOS-1578,5.0,5.0,4.9,5.0
+* To ensure that Master maintain the message order of a framework it's important that Master sends an FrameworkErrorMessage back to the scheduler to ask it to abort.",1,4,MESOS-1578,5.0,5.0,5.0,5.0
 Race between executor exited event and launch task can cause overcommit of resources,"The following sequence of events can cause an overcommit
 
 --> Launch task is called for a task whose executor is already running
@@ -15132,7 +15138,7 @@ Race between executor exited event and launch task can cause overcommit of resou
 
 --> Master sends the task to the slave which needs to commit for resources for task and the (new) executor.
 
---> Master processes the executor exited event and re-offers the executor's resources causing an overcommit of resources.",1,4,MESOS-1466,8.0,8.0,5.95,6.0
+--> Master processes the executor exited event and re-offers the executor's resources causing an overcommit of resources.",1,4,MESOS-1466,8.0,8.0,6.4,6.0
 SlaveRecoveryTest/0.MultipleFrameworks is flaky,"--gtest_repeat=-1 --gtest_shuffle --gtest_break_on_failure
 
 {noformat}
@@ -15247,7 +15253,7 @@ Update semantics of when framework registered()/reregistered() get called,"Curre
 Updated semantics:
 
 Everything same except 
-3) Framework reconnects w/ failed over master --> reregistered()",1,6,MESOS-786,3.0,3.0,3.5,4.0
+3) Framework reconnects w/ failed over master --> reregistered()",1,6,MESOS-786,3.0,3.0,3.4,3.0
 [Front-end]: Minor issues connected with localization,"*1.*
 
 *Preconditions:*

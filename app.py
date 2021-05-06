@@ -5,6 +5,8 @@ from Train_RandomForest import e,RandomForest
 from Train_MLR import MLR
 from Predict_Text_Score import Predict_textScore
 from Predict_MLR import Predict_Storypoint
+from single_prefict_TS import single_prefict_TS
+from single_predict_MLR import single_predict_MLR
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
@@ -44,7 +46,7 @@ def developers():
         cur.execute("SELECT * FROM developer")
         devs=cur.fetchall()
         cur.close()
-        print(json.dumps( devs))
+        # print(json.dumps( devs))
         return json.dumps( devs)
         
     elif request.method=="POST":
@@ -58,7 +60,7 @@ def developers():
 def bugreport(bugId):
     if request.method=="GET":
         cur = mysql.connection.cursor()
-        cur.execute("SELECT b.Id,b.Summary,b.Description,b.StroyPoint,b.PredictedStoryPoint,bc.Comment,d.Name FROM bugdev bd JOIN developer d ON bd.DevId = d.Id RIGHT JOIN bug b ON b.Id = bd.BugId LEFT JOIN bugcomment bc ON b.Id = bc.BugId WHERE b.Id=%s;",(bugId))
+        cur.execute("SELECT b.Id,b.Summary,b.Description,b.StroyPoint,b.PredictedStoryPoint,bc.Comment,d.Name FROM bugdev bd JOIN developer d ON bd.DevId = d.Id RIGHT JOIN bug b ON b.Id = bd.BugId LEFT JOIN bugcomment bc ON b.Id = bc.BugId WHERE b.Id=%s;",[bugId])
         bugs=cur.fetchall()
         cur.close()
         bugList=[]
@@ -78,7 +80,7 @@ def bugreport(bugId):
                     names.append(bg["Name"])
         bugList[0]["Comment"]=comments
         bugList[0]["Name"]=names
-        print(bugList[0])
+        # print(bugList[0])
         return {"bugreport":bugList}
 
 
@@ -98,11 +100,11 @@ def bug():
             temp={"Id":result[0],"Summary":result[1],"Description":result[2],"StroyPoint":result[3],"PredictedStoryPoint":result[4]}
             bugList.append(temp)
             temp={}
-        print(bug)
+        # print(bug)
         return {"bugs":bugList}
 
     elif request.method=="POST":
-        print(request.json)
+        # print(request.json)
         cur = mysql.connection.cursor()
         try:
             cur.execute("INSERT INTO bug(Summary, Description) VALUES (%s, %s)", (request.json['summary'], request.json['description']))
@@ -192,17 +194,23 @@ def accuracy():
         }
         return jsont
 
-@app.route('/traineddata',methods=["GET","POST"])
+@app.route('/storypointgen',methods=["GET","POST"])
 def traineddata():
     if request.method=="GET":
-        dataset = pd.read_csv("./csv/9_final.csv")
-        print(dataset)
         return "meassures"
         
     elif request.method=="POST":
+        # print(request.json['bug']["Description"])
+        data=request.json['bug']["Summary"],request.json['bug']["Description"],len(request.json['bug']["Name"]),len(request.json['bug']["Comment"]),request.json['bug']["Id"],request.json['bug']["StroyPoint"]
+        # print(data)
+        single_prefict_TS(data)
+        sp = single_predict_MLR()
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE bug SET `PredictedStoryPoint`=%s WHERE Id=%s", (sp, request.json['bug']["Id"]))
+        mysql.connection.commit()
+        cur.close()
         jsont={
-            "name":"kelum",
-            "num":c()
+            "Predicted":sp
         }
         return jsont
 
