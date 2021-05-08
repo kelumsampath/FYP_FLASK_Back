@@ -1,36 +1,6 @@
 Summary,Description,Number of developers,Number of comments,Issue key,Story point
-Job definitions request limits 20 results by default,"Trying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid optionTrying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid optionTrying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid optionTrying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid optionTrying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid option",1,5,10,
-Job definitions request limits 20 results by default,"Trying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid optionTrying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid optionTrying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid optionTrying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid optionTrying to use xd-container with PHD, and therefore need to start with --hadoopDistro. I get the following error:
-
-$ bin/xd-container --hadoopDistro phd1
-17:11:20,305 ERROR main server.ContainerMain:59 - ""--hadoopDistro"" is not a valid option",1,5,10,
+testing,testtt,2,0,7,
+testing,testtt,2,0,7,
 Job definitions request limits 20 results by default,"As a user, I'm trying to get all job definitions, but the first 20 alone are returned.
 
 Job samples:

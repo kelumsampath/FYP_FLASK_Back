@@ -242,6 +242,18 @@ def deletecomment():
         cur.close()
         return "comment deleted!"
 
+@app.route('/deletebug',methods=["GET","POST"])
+def deletebug():
+    if request.method=="GET":
+        return 'Hello, World!'+str(b())
+    elif request.method=="POST":
+        print(request.json['bugId'])
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM bug WHERE Id=%s", (str(request.json['bugId'])))
+        mysql.connection.commit()
+        cur.close()
+        return "bug deleted!"
+
 import Train_Vecorize  
 import Train_RandomForest
 import Train_MLR 
