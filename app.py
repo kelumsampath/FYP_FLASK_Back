@@ -214,7 +214,7 @@ def traineddata():
         }
         return jsont
 
-@app.route('/comment',methods=["GET","POST"])
+@app.route('/comment',methods=["GET","POST","DELETE"])
 def comment():
     if request.method=="GET":
         return 'Hello, World!'+str(b())
@@ -223,9 +223,24 @@ def comment():
         cur.execute("INSERT INTO bugcomment(BugId, Comment) VALUES (%s, %s)", (request.json['Id'], request.json['comment']))
         mysql.connection.commit()
         cur.close()
-        
         return "Comment saved"
+    elif request.method=="DELETE":
+        print(request.json['bugId'])
+        print(request.json['comment'])
+        return "comment deleted!"
 
+@app.route('/deletecomment',methods=["GET","POST"])
+def deletecomment():
+    if request.method=="GET":
+        return 'Hello, World!'+str(b())
+    elif request.method=="POST":
+        print(request.json['bugId'])
+        print(request.json['comment'])
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM bugcomment WHERE BugId=%s AND Comment=%s", (request.json['bugId'], request.json['comment']))
+        mysql.connection.commit()
+        cur.close()
+        return "comment deleted!"
 
 import Train_Vecorize  
 import Train_RandomForest
