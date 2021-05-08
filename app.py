@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import json, request
-from Train_Vecorize import b, c,Preprocess_Vectorize_TFIDF
+from Train_Vecorize import b, c,Preprocess_Vectorize_TFIDF,read_csv_file
 from Train_RandomForest import e,RandomForest
 from Train_MLR import MLR
 from Predict_Text_Score import Predict_textScore
@@ -254,6 +254,23 @@ def deletebug():
         cur.close()
         return "bug deleted!"
 
+
+@app.route('/stats',methods=["GET","POST"])
+def stats():
+    if request.method=="GET":
+        data=read_csv_file("./csv/9_final.csv")[:51]
+        del data[0]
+        A=np.array(data)
+        results={
+            "id":A[:,0].tolist(),
+            "actual":A[:,1].tolist(),
+            "textscore":A[:,2].tolist(),
+            "predicted":A[:,5].tolist(),
+        }
+        # print(A[:,0])
+        return results
+    
+
 import Train_Vecorize  
 import Train_RandomForest
 import Train_MLR 
@@ -263,6 +280,7 @@ import json
 import json
 import os
 import pandas as pd
+import numpy as np
 
 if __name__== '__main__':
     app.run(debug=True)
