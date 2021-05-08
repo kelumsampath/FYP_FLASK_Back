@@ -249,7 +249,7 @@ def deletebug():
     elif request.method=="POST":
         print(request.json['bugId'])
         cur = mysql.connection.cursor()
-        cur.execute("DELETE FROM bug WHERE Id=%s", (str(request.json['bugId'])))
+        cur.execute("DELETE FROM bug WHERE Id=%s", [str(request.json['bugId'])])
         mysql.connection.commit()
         cur.close()
         return "bug deleted!"
