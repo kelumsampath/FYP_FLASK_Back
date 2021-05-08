@@ -214,6 +214,18 @@ def traineddata():
         }
         return jsont
 
+@app.route('/comment',methods=["GET","POST"])
+def comment():
+    if request.method=="GET":
+        return 'Hello, World!'+str(b())
+    elif request.method=="POST":
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO bugcomment(BugId, Comment) VALUES (%s, %s)", (request.json['Id'], request.json['comment']))
+        mysql.connection.commit()
+        cur.close()
+        
+        return "Comment saved"
+
 
 import Train_Vecorize  
 import Train_RandomForest
