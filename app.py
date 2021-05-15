@@ -296,7 +296,7 @@ def removedev():
         print(devId)
         mysql.connection.commit()
         cur.close()
-        return "bug dev added!"
+        return "bug dev removed!"
     
 
 import Train_Vecorize  
