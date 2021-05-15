@@ -1,10 +1,10 @@
 Summary,Description,Number of developers,Number of comments,Issue key,Story point,previous_story_point,estimated_test_score,text_score_rounded
 Counter sink does not accept SpEL expressions,"As a user, I'm trying to use {{counter}} sink with {SpEL}} expression, but I'm not able to use them in combination. It [throws|https://github.com/spring-cloud/spring-cloud-stream-modules/blob/master/counter-sink/src/main/java/org/springframework/cloud/stream/module/metrics/CounterSinkProperties.java#L77] {{exactly one of 'name' and 'nameExpression' must be set}} as error message.
 
-",4,0,11,,,5.336547619047619,5.0
+",6,0,11,,,5.336547619047619,5.0
 Counter sink does not accept SpEL expressions,"As a user, I'm trying to use {{counter}} sink with {SpEL}} expression, but I'm not able to use them in combination. It [throws|https://github.com/spring-cloud/spring-cloud-stream-modules/blob/master/counter-sink/src/main/java/org/springframework/cloud/stream/module/metrics/CounterSinkProperties.java#L77] {{exactly one of 'name' and 'nameExpression' must be set}} as error message.
 
-",4,0,11,,,5.336547619047619,5.0
+",6,0,11,,,5.336547619047619,5.0
 Occational MIsses on Indexing into Elasticsearch,Occasionally applications still aren't being indexed into elasticsearch. Need to investigate why these might be occuring. ,0,0,USERGRID-1027,8.0,8.0,2.7315195182972167,3.0
 Re-index using AmazonAsyncEventService should support updated date,"see implemented example for InMemoryAsyncEventService
 

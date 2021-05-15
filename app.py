@@ -282,6 +282,21 @@ def addBugDevs():
         mysql.connection.commit()
         cur.close()
         return "bug dev added!"
+
+@app.route('/removedev',methods=["GET","POST"])
+def removedev():
+    if request.method=="GET":
+        return 'Hello, World!'+str(b())
+    elif request.method=="POST":
+        print(request.json['bugId'])
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT Id FROM developer WHERE Name=%s",[request.json['devName']])
+        devId=cur.fetchone()[0]
+        cur.execute("DELETE FROM bugdev WHERE BugId=%s AND DevId=%s", [str(request.json['bugId']),devId])
+        print(devId)
+        mysql.connection.commit()
+        cur.close()
+        return "bug dev added!"
     
 
 import Train_Vecorize  
