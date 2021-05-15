@@ -5,14 +5,14 @@ Acceptance Tests fail to map some EC2 internal IPs to External IPs,"The acceptan
 The acceptance tests only handled the most common suffix of .ec2.internal.  Thus some CI Acceptance tests will fail because, because the container's IPs were not properly mapped.  Thus the acceptance tests should map internal to external IP without regard to the suffixes EC2 issues.
 
 FYI
-EC2 issues addresses in 2 different formats: ip-XXX-XXX-XXX-XXX.ec2.internal or domU-XX-XX-XX-XX-XX-XX.compute-1.internal.  The code only able to handle ip-XXX-XXX-XXX-XXX.ec2.internal.  ",1,0,18,,,2.4,2.0
+EC2 issues addresses in 2 different formats: ip-XXX-XXX-XXX-XXX.ec2.internal or domU-XX-XX-XX-XX-XX-XX.compute-1.internal.  The code only able to handle ip-XXX-XXX-XXX-XXX.ec2.internal.  ",5,0,18,,,2.4,2.0
 Acceptance Tests fail to map some EC2 internal IPs to External IPs,"The acceptance tests interrogate the XD-Admin for the containers that are available.  When on EC2 the admin only returns the internal EC2 addresses without the associated suffix of .ec2.internal or .compute-1.internal.   
 
 [Defect]
 The acceptance tests only handled the most common suffix of .ec2.internal.  Thus some CI Acceptance tests will fail because, because the container's IPs were not properly mapped.  Thus the acceptance tests should map internal to external IP without regard to the suffixes EC2 issues.
 
 FYI
-EC2 issues addresses in 2 different formats: ip-XXX-XXX-XXX-XXX.ec2.internal or domU-XX-XX-XX-XX-XX-XX.compute-1.internal.  The code only able to handle ip-XXX-XXX-XXX-XXX.ec2.internal.  ",1,0,18,,,2.4,2.0
+EC2 issues addresses in 2 different formats: ip-XXX-XXX-XXX-XXX.ec2.internal or domU-XX-XX-XX-XX-XX-XX.compute-1.internal.  The code only able to handle ip-XXX-XXX-XXX-XXX.ec2.internal.  ",5,0,18,,,2.4,2.0
 Job definitions request limits 20 results by default,"As a user, I'm trying to get all job definitions, but the first 20 alone are returned.
 
 Job samples:

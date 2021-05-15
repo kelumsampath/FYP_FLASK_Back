@@ -269,6 +269,19 @@ def stats():
         }
         # print(A[:,0])
         return results
+
+@app.route('/addBugDevs',methods=["GET","POST"])
+def addBugDevs():
+    if request.method=="GET":
+        return 'Hello, World!'+str(b())
+    elif request.method=="POST":
+        print(request.json['bugId'])
+        cur = mysql.connection.cursor()
+        for devId in request.json['devIds']:
+            cur.execute("INSERT INTO bugdev(BugId, DevId) VALUES (%s, %s)", (request.json['bugId'], devId))
+        mysql.connection.commit()
+        cur.close()
+        return "bug dev added!"
     
 
 import Train_Vecorize  
