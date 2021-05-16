@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import pickle
+from SharedFucntions import nearestFibo
 
 def single_predict_MLR():
     dataset = pd.read_csv("./csv/SinglePrediction/9_input_datset2.csv")
@@ -11,6 +12,11 @@ def single_predict_MLR():
     ###load saved model
     linear_Regression_Model = pickle.load(open('./Models/MultipleLinearRegressorModel.sav', 'rb'))
     y_pred= linear_Regression_Model.predict(x)
+
+    for i,predSp in enumerate(y_pred):
+        # print(temp)
+        # print(i)
+        y_pred[i]=nearestFibo(predSp)
 
     dataset['Predicted_sp']=y_pred
 

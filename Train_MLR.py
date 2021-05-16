@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 import pickle
+from SharedFucntions import nearestFibo
 
 def MLR():
     dataset = pd.read_csv("./csv/9_input_datset2.csv")
@@ -17,7 +18,13 @@ def MLR():
     pickle.dump(linear_regression, open('./Models/MultipleLinearRegressorModel.sav', 'wb'))
 
     y_pred= linear_regression.predict(x)
-    dataset["Estimated_sp"]=np.round(y_pred)
+    # print(type(y_pred))
+    for i,predSp in enumerate(y_pred):
+        # print(temp)
+        # print(i)
+        y_pred[i]=nearestFibo(predSp)
+    # dataset["Estimated_sp"]=np.round(y_pred)
+    dataset["Estimated_sp"]=y_pred
     dataset.to_csv('./csv/9_final.csv', encoding='utf-8', mode='w', header=True, index=False)
 
     print('Mean Absolute Error:', metrics.mean_absolute_error(y, y_pred))

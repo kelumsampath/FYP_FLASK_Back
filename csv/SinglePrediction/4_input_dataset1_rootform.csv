@@ -1,5 +1,5 @@
 Bug text root form,issue key,Story point
-ewererwf dsf dfd seff wefgf aeada,12,
+spring xd poor perform use redi transport `` when use redi transport bu problem use mani stream tap . basic maxtot paramet org.apache.commons.pool2.genericobjectpool default 8 . after stream deploy start occur concurr problem henc number inbound redi channel adapt larger number . a detail explan stackoverflow : http : //stackoverflow.com/questions/25851660/spring-xd-very-poor-performance-when-using-redis-as-transport '',17,
 occat miss index elasticsearch occasion applic still n't index elasticsearch . need investig might occur .,USERGRID-1027,8.0
 re-index use amazonasynceventservic support updat date see implement exampl inmemoryasynceventservic org/apache/usergrid/corepersistence/asyncevents/eventbuilderimpl.java:166 thi filter base modified/upd date event index . need ensur amazonasynceventservic consum implement someth similar or look produc filter event even drop aw queue .,USERGRID-900,3.0
 fix prune usergrid tool 2.1 the usergrid tool broken varieti way two-dot-o two-dot-o-dev brand . the tool compil . mani reli outdat 1.0 concept . mani obsolet . 1 . delet obsolet tool 2 . make tool compil,USERGRID-872,3.0

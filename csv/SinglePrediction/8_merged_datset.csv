@@ -1,6 +1,16 @@
 Summary,Description,Number of developers,Number of comments,Issue key,Story point,previous_story_point,estimated_test_score,text_score_rounded
-ewererwf dsf,dfds  seff wefgf aeada,2,1,12,,,2.7315195182972167,3.0
-ewererwf dsf,dfds  seff wefgf aeada,2,1,12,,,2.7315195182972167,3.0
+Spring XD very poor performance when using redis as transport,"""When using redis as transport bus there is a problem when using many streams and taps. Basically the maxTotal parameter of org.apache.commons.pool2.GenericObjectPool default is 8. After some streams are deployed it starts to occur concurrency problems hence the number of inbound redis channel adapters is larger than that number.
+
+A more detailed explanation is in stackoverflow:
+
+http://stackoverflow.com/questions/25851660/spring-xd-very-poor-performance-when-using-redis-as-transport""
+",2,1,17,,,2.7315195182972167,3.0
+Spring XD very poor performance when using redis as transport,"""When using redis as transport bus there is a problem when using many streams and taps. Basically the maxTotal parameter of org.apache.commons.pool2.GenericObjectPool default is 8. After some streams are deployed it starts to occur concurrency problems hence the number of inbound redis channel adapters is larger than that number.
+
+A more detailed explanation is in stackoverflow:
+
+http://stackoverflow.com/questions/25851660/spring-xd-very-poor-performance-when-using-redis-as-transport""
+",2,1,17,,,2.7315195182972167,3.0
 Occational MIsses on Indexing into Elasticsearch,Occasionally applications still aren't being indexed into elasticsearch. Need to investigate why these might be occuring. ,0,0,USERGRID-1027,8.0,8.0,2.7315195182972167,3.0
 Re-index using AmazonAsyncEventService should support updated date,"see implemented example for InMemoryAsyncEventService
 
