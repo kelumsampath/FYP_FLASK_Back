@@ -258,7 +258,7 @@ def deletebug():
 @app.route('/stats',methods=["GET","POST"])
 def stats():
     if request.method=="GET":
-        data=read_csv_file("./csv/9_final.csv")[:51]
+        data=read_csv_file("./csv/9_final.csv")[:200]
         del data[0]
         A=np.array(data)
         results={
@@ -296,7 +296,7 @@ def removedev():
         print(devId)
         mysql.connection.commit()
         cur.close()
-        return "bug dev added!"
+        return "bug dev removed!"
     
 
 import Train_Vecorize  
