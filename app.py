@@ -107,7 +107,7 @@ def bug():
         # print(request.json)
         cur = mysql.connection.cursor()
         try:
-            cur.execute("INSERT INTO bug(Summary, Description) VALUES (%s, %s)", (request.json['summary'], request.json['description']))
+            cur.execute("INSERT INTO bug(Summary, Description,StroyPoint) VALUES (%s, %s,%s)", (request.json['summary'], request.json['description'],request.json['stroypoint']))
             id=mysql.connection.insert_id()
             mysql.connection.commit()
             for devId in request.json['developers']:
